@@ -7,7 +7,61 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: "Poppins", sans-serif !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .card-title,
+      .card-subtitle,
+      .form-control,
+      .form-select,
+      .btn,
+      .progress-label,
+      .text-muted,
+      label,
+      span,
+      p {
+        font-family: "Poppins", sans-serif !important;
+      }
+
+      .card-title {
+        font-weight: 500 !important;
+      }
+
+      .progress-label {
+        font-weight: 400 !important;
+      }
+
+      .btn {
+        font-weight: 500 !important;
+      }
+
+      h6 {
+        font-weight: 400 !important;
+      }
+
+      .h4 {
+        font-weight: 500 !important;
+      }
+
+      .text-muted {
+        font-weight: 400 !important;
+      }
+
       .image-grid {
         display: grid;
         gap: 5px;
@@ -45,114 +99,379 @@
       body {
         background-color: #f8f9fa;
       }
-      .progress {
-        height: 20px;
+      .progress.stacked-progress {
+        height: 35px !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .stacked-progress .progress-bar {
+        position: relative;
+        transition: width 0.3s ease-in-out;
+        line-height: 45px !important;
+      }
+      .stacked-progress .progress-label {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        right: 0;
+        text-align: center;
+        white-space: nowrap;
+        line-height: 45px !important;
+        color: white;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        font-size: 1rem !important;
       }
       .navbar {
-        padding: 0.2rem 1rem;
+        padding: 0.3rem 1rem !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        height: 48px !important;
+      }
+      .navbar-brand {
+        transition: all 0.3s ease;
+        font-family: "Montserrat", sans-serif !important;
+        font-size: 1.4rem !important;
+        line-height: 1;
+        cursor: default;
+        user-select: none;
+      }
+      .navbar-brand:hover {
+        transform: scale(1.05);
+      }
+      .navbar-brand .brand-text {
+        font-weight: 700 !important;
+        letter-spacing: 1px;
       }
       .card-body {
-        padding: 0.5rem;
+        padding: 0.25rem !important;
+      }
+      .card-title {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.25rem !important;
+      }
+      .card-subtitle {
+        font-size: 0.8rem !important;
+        margin-bottom: 0.2rem !important;
+      }
+      .mb-3 {
+        margin-bottom: 0.25rem !important;
       }
       .mb-4 {
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.25rem !important;
       }
       .mt-4 {
         margin-top: 0.5rem !important;
+      }
+      @keyframes markAnimation {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .mark-animation {
+        animation: markAnimation 0.3s ease;
+      }
+      .h4 {
+        font-size: 1rem !important;
+        margin-bottom: 0 !important;
+      }
+      .form-control-sm {
+        padding: 0.1rem 0.2rem !important;
+        font-size: 0.8rem !important;
+        height: calc(1.5em + 0.25rem + 2px) !important;
+      }
+      .form-select-sm {
+        padding: 0.1rem 0.2rem !important;
+        font-size: 0.8rem !important;
+        height: calc(1.5em + 0.25rem + 2px) !important;
+      }
+      .btn-sm {
+        padding: 0.1rem 0.3rem !important;
+        font-size: 0.8rem !important;
+      }
+      .card-body {
+        padding: 0.5rem !important;
+      }
+      .card-title {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem !important;
+        font-weight: 500 !important;
+      }
+      .control-section {
+        font-size: 0.85rem;
+      }
+      .control-section label {
+        margin-bottom: 0;
+        font-size: 0.85rem;
+      }
+      .form-control-sm,
+      .form-select-sm {
+        font-size: 0.85rem !important;
+        padding: 0.2rem 0.4rem !important;
+        height: calc(1.5em + 0.5rem + 2px) !important;
+      }
+      .h4 {
+        font-size: 1.2rem !important;
+        font-weight: 500 !important;
+      }
+      h6 {
+        font-size: 0.85rem !important;
+        font-weight: normal !important;
+      }
+      hr {
+        margin: 0;
+        opacity: 0.15;
+      }
+      #selectionMode {
+        min-width: 140px !important;
+      }
+      .key-controls .btn-sm {
+        height: calc(1.5em + 0.5rem + 2px) !important;
+        padding: 0.2rem 0.4rem !important;
+        font-size: 0.85rem !important;
+        min-width: 140px !important;
+        background-color: white;
+        border-color: #ced4da;
+      }
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 8%;
+        background: none;
+        bottom: -50px;
+        top: auto;
+        opacity: 1;
+      }
+
+      .carousel-control-prev {
+        left: 35%;
+      }
+
+      .carousel-control-next {
+        right: 35%;
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: #212529;
+        border-radius: 50%;
+        padding: 15px;
+      }
+
+      .carousel-item {
+        padding: 1rem 1rem 3rem 1rem;
+        min-height: 300px;
+      }
+
+      .carousel-indicators {
+        bottom: -45px;
+      }
+
+      .carousel-indicators button {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
       }
     </style>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
-        <a class="navbar-brand" href="#">Image Filter Tool</a>
+        <div class="navbar-brand">
+          <span class="brand-text" style="color: #00ff00">Image</span>
+          <span class="brand-text" style="color: #ff3333">Filter</span>
+          <span class="brand-text" style="color: #ffffff">Tool</span>
+        </div>
+        <button
+          class="btn btn-outline-light"
+          onclick="startTutorial()"
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
+          title="Click for Tutorial"
+          style="
+            width: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <strong style="font-size: 1.2rem">?</strong>
+        </button>
       </div>
     </nav>
 
     <div class="container mt-4">
       <div class="row mb-4">
         <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Grid Layout</h5>
-              <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                  <label for="columns" class="col-form-label">Columns:</label>
-                </div>
-                <div class="col-auto">
-                  <input
-                    type="number"
-                    id="columns"
-                    class="form-control"
-                    value="12"
-                    min="1"
-                    max="24"
-                  />
-                </div>
-                <div class="col-auto">
-                  <label for="imageHeight" class="col-form-label"
-                    >Image Height (px):</label
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Controls</h5>
+              <!-- Grid Layout Section -->
+              <div class="control-section">
+                <div class="d-flex align-items-center mb-1">
+                  <span class="text-muted me-2" style="font-size: 0.85rem"
+                    >Grid Layout</span
                   >
+                  <div class="flex-grow-1"><hr class="my-0" /></div>
                 </div>
-                <div class="col-auto">
-                  <input
-                    type="number"
-                    id="imageHeight"
-                    class="form-control"
-                    value="80"
-                    min="40"
-                    max="400"
-                  />
+                <div class="row g-1 align-items-center">
+                  <div class="col-auto">
+                    <label for="columns" class="col-form-label">Columns:</label>
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="number"
+                      id="columns"
+                      class="form-control form-control-sm"
+                      value="12"
+                      min="1"
+                      max="24"
+                    />
+                  </div>
+                  <div class="col-auto ms-2">
+                    <label for="imageHeight" class="col-form-label"
+                      >Height:</label
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="number"
+                      id="imageHeight"
+                      class="form-control form-control-sm"
+                      value="80"
+                      min="40"
+                      max="400"
+                    />
+                  </div>
+                  <div class="col-auto ms-2">
+                    <label for="imagesPerPage" class="col-form-label"
+                      >Per page:</label
+                    >
+                  </div>
+                  <div class="col-auto">
+                    <input
+                      type="number"
+                      id="imagesPerPage"
+                      class="form-control form-control-sm"
+                      value="48"
+                      min="1"
+                      max="72"
+                    />
+                  </div>
                 </div>
-                <div class="col-auto">
-                  <label for="imagesPerPage" class="col-form-label"
-                    >Images per page:</label
+              </div>
+
+              <!-- Selection Mode Section -->
+              <div class="control-section mt-2">
+                <div class="d-flex align-items-center mb-1">
+                  <span class="text-muted me-2" style="font-size: 0.85rem"
+                    >Selection Mode</span
                   >
+                  <div class="flex-grow-1"><hr class="my-0" /></div>
                 </div>
-                <div class="col-auto">
-                  <input
-                    type="number"
-                    id="imagesPerPage"
-                    class="form-control"
-                    value="48"
-                    min="1"
-                    max="72"
-                  />
+                <div class="row g-1 align-items-center">
+                  <div class="col-auto">
+                    <select
+                      id="selectionMode"
+                      class="form-select form-select-sm"
+                      onchange="updateSelectionMode()"
+                    >
+                      <option value="hover">Hover Time</option>
+                      <option value="key">Key Press</option>
+                    </select>
+                  </div>
+                  <div class="col-auto ms-2 hover-controls">
+                    <label for="hoverDelay" class="col-form-label"
+                      >Hover Time (ms):</label
+                    >
+                  </div>
+                  <div class="col-auto hover-controls">
+                    <input
+                      type="number"
+                      id="hoverDelay"
+                      class="form-control form-control-sm"
+                      value="800"
+                      min="100"
+                      max="2000"
+                      step="100"
+                    />
+                  </div>
+                  <div class="col-auto ms-2 key-controls" style="display: none">
+                    <button
+                      id="triggerKeyBtn"
+                      class="btn btn-outline-secondary btn-sm"
+                      onclick="startKeyBinding()"
+                    >
+                      Set Key [<span id="currentKeyBind">X</span>]
+                    </button>
+                  </div>
                 </div>
-                <div class="col-auto">
-                  <button class="btn btn-primary" onclick="updateGridLayout()">
-                    Apply
-                  </button>
-                </div>
+              </div>
+
+              <!-- Apply Button -->
+              <div class="mt-auto text-end">
+                <button
+                  class="btn btn-primary btn-sm"
+                  onclick="updateGridLayout()"
+                >
+                  Apply Changes
+                </button>
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-md-6">
-          <div class="card stats-card">
-            <div class="card-body">
+          <div class="card h-100">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">Progress</h5>
-              <div class="progress mb-3">
-                <div
-                  id="progress-bar"
-                  class="progress-bar"
-                  role="progressbar"
-                  style="width: 0%"
-                ></div>
-              </div>
-              <div class="row text-center">
-                <div class="col">
-                  <h6>Original</h6>
-                  <span id="original-count" class="h4">0</span>
+              <div
+                class="flex-grow-1 d-flex flex-column justify-content-center"
+              >
+                <div class="progress stacked-progress">
+                  <div
+                    id="good-progress"
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: 0%"
+                  >
+                    <span class="progress-label">0%</span>
+                  </div>
+                  <div
+                    id="bad-progress"
+                    class="progress-bar bg-danger"
+                    role="progressbar"
+                    style="width: 0%"
+                  >
+                    <span class="progress-label">0%</span>
+                  </div>
+                  <div
+                    id="original-progress"
+                    class="progress-bar bg-dark"
+                    role="progressbar"
+                    style="width: 0%"
+                  >
+                    <span class="progress-label">0%</span>
+                  </div>
                 </div>
-                <div class="col">
-                  <h6>Good</h6>
-                  <span id="good-count" class="h4 text-success">0</span>
-                </div>
-                <div class="col">
-                  <h6>Bad</h6>
-                  <span id="bad-count" class="h4 text-danger">0</span>
+                <div class="row text-center mt-2">
+                  <div class="col">
+                    <h6 class="mb-1">Original</h6>
+                    <span id="original-count" class="h4">0</span>
+                  </div>
+                  <div class="col">
+                    <h6 class="mb-1">Good</h6>
+                    <span id="good-count" class="h4 text-success">0</span>
+                  </div>
+                  <div class="col">
+                    <h6 class="mb-1">Bad</h6>
+                    <span id="bad-count" class="h4 text-danger">0</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -179,29 +498,144 @@
     <script>
       let currentImages = [];
       let badImages = new Set();
+      let hoverTimer = null;
+      const HOVER_DELAY = 800;
+      let isMarking = false;
+      let currentMode = "hover";
+      let hoveredElement = null;
+      let keyBindModal = null;
+      let isBindingKey = false;
+      let currentKeyCode = "x"; // Store actual key code
+      let tutorialModal = null;
 
-      function loadBatch() {
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize modal
+        keyBindModal = new bootstrap.Modal(
+          document.getElementById("keyBindModal")
+        );
+
+        // Load preferences first
+        loadGridPreferences();
+
+        // Then load initial batch with a slight delay to ensure preferences are applied
+        setTimeout(() => {
+          const imagesPerPage = document.getElementById("imagesPerPage").value;
+          fetch(`/get_batch?size=${imagesPerPage}`)
+            .then((response) => response.json())
+            .then((data) => {
+              currentImages = data.images;
+              updateGrid();
+              updateStats(data.stats);
+
+              // Apply grid layout
+              const columns = document.getElementById("columns").value;
+              const imageHeight = document.getElementById("imageHeight").value;
+
+              const grid = document.getElementById("image-grid");
+              grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+
+              const images = grid.getElementsByTagName("img");
+              for (let img of images) {
+                img.style.height = `${imageHeight}px`;
+              }
+
+              // Update selection mode
+              updateSelectionMode();
+            })
+            .catch((error) =>
+              console.error("Error loading initial batch:", error)
+            );
+        }, 100); // Small delay to ensure preferences are loaded
+
+        // Initialize tutorial modal
+        tutorialModal = new bootstrap.Modal(
+          document.getElementById("tutorialModal")
+        );
+
+        // Initialize all tooltips
+        var tooltipTriggerList = [].slice.call(
+          document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        );
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+      });
+
+      // Modify loadGridPreferences to return a promise
+      async function loadGridPreferences() {
+        const savedColumns = localStorage.getItem("gridColumns");
+        const savedHeight = localStorage.getItem("imageHeight");
+        const savedImagesPerPage = localStorage.getItem("imagesPerPage");
+
+        if (savedColumns) {
+          document.getElementById("columns").value = savedColumns;
+        }
+        if (savedHeight) {
+          document.getElementById("imageHeight").value = savedHeight;
+        }
+        if (savedImagesPerPage) {
+          document.getElementById("imagesPerPage").value = savedImagesPerPage;
+        }
+
+        const savedMode = localStorage.getItem("selectionMode");
+        const savedDelay = localStorage.getItem("hoverDelay");
+        const savedKeyCode = localStorage.getItem("triggerKey");
+
+        if (savedMode) {
+          document.getElementById("selectionMode").value = savedMode;
+          currentMode = savedMode;
+        }
+        if (savedDelay) {
+          document.getElementById("hoverDelay").value = savedDelay;
+        }
+        if (savedKeyCode) {
+          currentKeyCode = savedKeyCode;
+          let keyName = savedKeyCode.replace("Key", "");
+          if (savedKeyCode === "Space") keyName = "Space";
+          else if (savedKeyCode === "ControlLeft") keyName = "Ctrl";
+          else if (savedKeyCode === "AltLeft") keyName = "Alt";
+          else if (savedKeyCode === "ShiftLeft") keyName = "Shift";
+          updateKeyDisplay(keyName);
+        }
+
+        updateSelectionMode();
+
+        // Apply grid layout but don't load batch yet
+        const columns = document.getElementById("columns").value;
+        const imageHeight = document.getElementById("imageHeight").value;
+
+        const grid = document.getElementById("image-grid");
+        grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+      }
+
+      // Modify loadBatch to return a promise
+      async function loadBatch() {
         const imagesPerPage = document.getElementById("imagesPerPage").value;
-        fetch(`/get_batch?size=${imagesPerPage}`)
-          .then((response) => response.json())
-          .then((data) => {
-            currentImages = data.images;
-            badImages.clear();
-            updateGrid();
-            updateStats(data.stats);
-            // Apply the grid layout settings after loading new images
-            const columns = document.getElementById("columns").value;
-            const imageHeight = document.getElementById("imageHeight").value;
+        try {
+          const response = await fetch(`/get_batch?size=${imagesPerPage}`);
+          const data = await response.json();
 
-            const grid = document.getElementById("image-grid");
-            grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+          currentImages = data.images;
+          badImages.clear();
 
-            // Update all image heights
-            const images = grid.getElementsByTagName("img");
-            for (let img of images) {
-              img.style.height = `${imageHeight}px`;
-            }
-          });
+          updateGrid();
+          updateStats(data.stats);
+
+          // Apply grid layout
+          const columns = document.getElementById("columns").value;
+          const imageHeight = document.getElementById("imageHeight").value;
+
+          const grid = document.getElementById("image-grid");
+          grid.style.gridTemplateColumns = `repeat(${columns}, 1fr)`;
+
+          // Update all image heights
+          const images = grid.getElementsByTagName("img");
+          for (let img of images) {
+            img.style.height = `${imageHeight}px`;
+          }
+        } catch (error) {
+          console.error("Error loading batch:", error);
+        }
       }
 
       function updateGrid() {
@@ -218,7 +652,41 @@
 
           const img = document.createElement("img");
           img.src = imagePath;
-          img.onclick = () => toggleImage(filename);
+
+          // Handle hover events for both modes
+          container.addEventListener("mouseenter", () => {
+            hoveredElement = container;
+            if (currentMode === "hover") {
+              const delay = parseInt(
+                document.getElementById("hoverDelay").value
+              );
+              hoverTimer = setTimeout(() => {
+                if (!badImages.has(filename)) {
+                  toggleImage(filename);
+                  container.classList.add("mark-animation");
+                  setTimeout(
+                    () => container.classList.remove("mark-animation"),
+                    300
+                  );
+                }
+              }, delay);
+            }
+          });
+
+          container.addEventListener("mouseleave", () => {
+            hoveredElement = null;
+            if (currentMode === "hover") {
+              clearTimeout(hoverTimer);
+            }
+          });
+
+          container.onclick = () => {
+            clearTimeout(hoverTimer);
+            toggleImage(filename);
+            container.classList.add("mark-animation");
+            setTimeout(() => container.classList.remove("mark-animation"), 300);
+          };
+
           img.onerror = () => {
             img.src =
               "https://via.placeholder.com/200?text=Error+Loading+Image";
@@ -256,10 +724,31 @@
         document.getElementById("bad-count").textContent = stats.bad;
 
         const total = stats.original + stats.good + stats.bad;
-        const progress = ((stats.good + stats.bad) / total) * 100;
-        const progressBar = document.getElementById("progress-bar");
-        progressBar.style.width = `${progress}%`;
-        progressBar.textContent = `${Math.round(progress)}%`;
+
+        // Calculate percentages
+        const goodPercent = (stats.good / total) * 100;
+        const badPercent = (stats.bad / total) * 100;
+        const originalPercent = (stats.original / total) * 100;
+
+        // Update progress bars
+        const goodProgress = document.getElementById("good-progress");
+        const badProgress = document.getElementById("bad-progress");
+        const originalProgress = document.getElementById("original-progress");
+
+        goodProgress.style.width = `${goodPercent}%`;
+        badProgress.style.width = `${badPercent}%`;
+        originalProgress.style.width = `${originalPercent}%`;
+
+        // Update labels
+        goodProgress.querySelector(
+          ".progress-label"
+        ).textContent = `Good ${Math.round(goodPercent)}%`;
+        badProgress.querySelector(
+          ".progress-label"
+        ).textContent = `Bad ${Math.round(badPercent)}%`;
+        originalProgress.querySelector(
+          ".progress-label"
+        ).textContent = `Original ${Math.round(originalPercent)}%`;
       }
 
       function submitBatch() {
@@ -285,13 +774,6 @@
             }
           });
       }
-
-      // Handle Enter key
-      document.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-          submitBatch();
-        }
-      });
 
       // Add grid layout functions
       function updateGridLayout() {
@@ -320,31 +802,6 @@
         }
       }
 
-      // Load saved preferences
-      function loadGridPreferences() {
-        const savedColumns = localStorage.getItem("gridColumns");
-        const savedHeight = localStorage.getItem("imageHeight");
-        const savedImagesPerPage = localStorage.getItem("imagesPerPage");
-
-        if (savedColumns) {
-          document.getElementById("columns").value = savedColumns;
-        }
-        if (savedHeight) {
-          document.getElementById("imageHeight").value = savedHeight;
-        }
-        if (savedImagesPerPage) {
-          document.getElementById("imagesPerPage").value = savedImagesPerPage;
-        }
-
-        updateGridLayout();
-      }
-
-      // Modified initial load
-      document.addEventListener("DOMContentLoaded", function () {
-        loadGridPreferences();
-        loadBatch();
-      });
-
       function resetBatch() {
         badImages.clear(); // Clear the set of bad images
         const containers = document.querySelectorAll(".image-container");
@@ -352,6 +809,263 @@
           container.classList.remove("bad"); // Remove bad class from all containers
         });
       }
+
+      function updateSelectionMode() {
+        currentMode = document.getElementById("selectionMode").value;
+        const hoverControls = document.querySelectorAll(".hover-controls");
+        const keyControls = document.querySelectorAll(".key-controls");
+
+        if (currentMode === "hover") {
+          hoverControls.forEach((el) => (el.style.display = ""));
+          keyControls.forEach((el) => (el.style.display = "none"));
+        } else {
+          hoverControls.forEach((el) => (el.style.display = "none"));
+          keyControls.forEach((el) => (el.style.display = ""));
+        }
+
+        // Save preference
+        localStorage.setItem("selectionMode", currentMode);
+        localStorage.setItem(
+          "hoverDelay",
+          document.getElementById("hoverDelay").value
+        );
+        localStorage.setItem(
+          "triggerKey",
+          document.getElementById("triggerKey").value
+        );
+      }
+
+      function startKeyBinding() {
+        isBindingKey = true;
+        keyBindModal.show();
+        document.getElementById("currentKey").textContent = "...";
+      }
+
+      function cancelKeyBind() {
+        isBindingKey = false;
+        keyBindModal.hide();
+      }
+
+      function updateKeyDisplay(keyName) {
+        document.getElementById("currentKeyBind").textContent = keyName;
+      }
+
+      // Modified key event listener to handle both binding and triggering
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          submitBatch();
+          return;
+        }
+
+        if (isBindingKey) {
+          e.preventDefault();
+          e.stopPropagation(); // Stop event propagation
+
+          // Get a display-friendly key name
+          let keyName = e.key;
+          if (e.key === " ") keyName = "Space";
+          else if (e.key === "Control") keyName = "Ctrl";
+          else if (e.key === "Alt") keyName = "Alt";
+          else if (e.key === "Shift") keyName = "Shift";
+
+          // Store the actual key code
+          currentKeyCode = e.code;
+
+          // Update displays
+          document.getElementById("currentKey").textContent = keyName;
+          updateKeyDisplay(keyName);
+
+          // Save to localStorage
+          localStorage.setItem("triggerKey", currentKeyCode);
+
+          // Close modal after a short delay
+          setTimeout(() => {
+            isBindingKey = false;
+            keyBindModal.hide();
+          }, 500);
+
+          return;
+        }
+
+        // Handle marking images (only when not binding)
+        if (
+          currentMode === "key" &&
+          hoveredElement &&
+          e.code === currentKeyCode
+        ) {
+          e.preventDefault(); // Prevent default behavior
+          const img = hoveredElement.querySelector("img");
+          const filename = img.src.split("/").pop();
+          toggleImage(filename);
+          hoveredElement.classList.add("mark-animation");
+          setTimeout(
+            () => hoveredElement.classList.remove("mark-animation"),
+            300
+          );
+        }
+      });
+
+      function startTutorial() {
+        tutorialModal.show();
+      }
     </script>
+    <div class="modal fade" id="keyBindModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Press a Key</h5>
+          </div>
+          <div class="modal-body text-center">
+            <p>Press any key to bind...</p>
+            <h3 id="currentKey" class="mt-3 mb-3">...</h3>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="cancelKeyBind()"
+            >
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="tutorialModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">How to Use Image Filter Tool</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div
+              id="tutorialCarousel"
+              class="carousel slide"
+              data-bs-interval="false"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <h5>Grid Layout Controls</h5>
+                  <p>Customize your view with these settings:</p>
+                  <ul>
+                    <li>
+                      <strong>Columns:</strong> Adjust the number of images per
+                      row
+                    </li>
+                    <li>
+                      <strong>Height:</strong> Change the height of each image
+                    </li>
+                    <li>
+                      <strong>Per page:</strong> Set how many images to show at
+                      once
+                    </li>
+                  </ul>
+                  <p class="text-muted">
+                    Click "Apply Changes" to update your settings
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h5>Selection Modes</h5>
+                  <p>Two ways to mark images as bad:</p>
+                  <ul>
+                    <li>
+                      <strong>Hover Time:</strong> Hold mouse over an image to
+                      mark it
+                    </li>
+                    <li>
+                      <strong>Key Press:</strong> Hover and press your chosen
+                      key
+                    </li>
+                  </ul>
+                  <p class="text-muted">
+                    You can always click an image to toggle its state
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h5>Progress Tracking</h5>
+                  <p>The progress bar shows:</p>
+                  <ul>
+                    <li>
+                      <strong class="text-success">Green:</strong> Good images
+                    </li>
+                    <li>
+                      <strong class="text-danger">Red:</strong> Bad images
+                    </li>
+                    <li><strong>Black:</strong> Remaining images</li>
+                  </ul>
+                  <p class="text-muted">
+                    Numbers below show the exact count for each category
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h5>Batch Controls</h5>
+                  <p>Manage your current batch with:</p>
+                  <ul>
+                    <li>
+                      <strong>Reset Batch:</strong> Clear all markings in
+                      current view
+                    </li>
+                    <li>
+                      <strong>Next Batch:</strong> Save changes and load new
+                      images
+                    </li>
+                    <li>
+                      <strong>Shortcut:</strong> Press Enter for next batch
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#tutorialCarousel"
+                data-bs-slide="prev"
+              >
+                <span class="carousel-control-prev-icon"></span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#tutorialCarousel"
+                data-bs-slide="next"
+              >
+                <span class="carousel-control-next-icon"></span>
+              </button>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="carousel-indicators position-relative mb-0">
+              <button
+                type="button"
+                data-bs-target="#tutorialCarousel"
+                data-bs-slide-to="0"
+                class="active bg-dark"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#tutorialCarousel"
+                data-bs-slide-to="1"
+                class="bg-dark"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#tutorialCarousel"
+                data-bs-slide-to="2"
+                class="bg-dark"
+              ></button>
+              <button
+                type="button"
+                data-bs-target="#tutorialCarousel"
+                data-bs-slide-to="3"
+                class="bg-dark"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
