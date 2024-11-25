@@ -23,6 +23,12 @@ A web-based tool designed for efficiently filtering and categorizing large image
 
 ---
 
+## 🖼️ Preview
+
+![Application Screenshot](https://i.postimg.cc/xjpgL9pR/Screenshot-20241125-104545.png)  
+
+---
+
 ## 🚀 Installation
 
 1. Clone the repository:
