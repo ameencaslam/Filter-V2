@@ -9,12 +9,14 @@ A web-based tool designed for efficiently filtering and categorizing large image
   - 🔹 Adjustable columns (1-24): Customize grid width to match your screen size  
   - 🔹 Configurable image height (40-400px): Balance between detail visibility and overview  
   - 🔹 Variable images per page (1-72): Adjust batch size based on your workflow  
-  - 🔹 Real-time layout updates: Instant visual feedback for all adjustments  
+  - 🔹 Real-time layout updates: Instant visual feedback for all adjustments
+    
 - **Multiple Selection Methods**  
   - 🔸 **Hover Mode**: Hold the cursor over images to mark them (adjustable timing)  
   - 🔸 **Key Press Mode**: Hover over images and press your chosen key (fully customizable)  
   - 🔸 **Click Mode**: Click to toggle for precise control  
-  - 🔸 Visual feedback: Animations and opacity changes for clear marking status  
+  - 🔸 Visual feedback: Animations and opacity changes for clear marking status
+     
 - **Progress Tracking**  
   - ✔️ Real-time progress visualization: See your progress as you work  
   - ✔️ Stacked progress bar: Color-coded sections for good (green), bad (red), and remaining (black) images  
