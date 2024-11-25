@@ -28,7 +28,7 @@ check_paths()
 def initialize_csv():
     if not os.path.exists(CSV_PATH):
         # Get all image files from the folder
-        images_dir = 'nutshell30k'
+        images_dir = 'your_image_directory_path' #Replace with your dataset directory
         try:
             # Create empty DataFrame first
             df = pd.DataFrame(columns=['filename', 'status'])
