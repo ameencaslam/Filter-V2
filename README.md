@@ -76,7 +76,7 @@ A web-based tool designed for efficiently filtering and categorizing large image
    ```bash
    python app.py
    ```
-3. Open your browser and navigate to: [http://localhost:5000](http://localhost:5000).
+3. Open your browser and navigate to: [http://127.0.0.1:5000/](http://127.0.0.1:5000/).
 4. Use the built-in tutorial (`?` button) for detailed usage instructions.
 
 ---
