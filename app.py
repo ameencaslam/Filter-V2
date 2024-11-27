@@ -28,7 +28,7 @@ check_paths()
 def initialize_csv():
     if not os.path.exists(CSV_PATH):
         # Get all image files from the folder
-        images_dir = 'your_image_directory_path' #Replace with your dataset directory
+        images_dir = 'nutshell30k' #Replace with your dataset directory
         try:
             # Create empty DataFrame first
             df = pd.DataFrame(columns=['filename', 'status'])
@@ -139,6 +139,32 @@ def serve_image(filename):
     else:
         logger.error(f"File not found: {full_path}")
         return "File not found", 404
+
+@app.route('/undo_last_batch', methods=['POST'])
+def undo_last_batch():
+    data = request.json
+    previous_batch = data.get('previous_batch', [])
+    bad_images = data.get('bad_images', [])
+    
+    df = pd.read_csv(CSV_PATH)
+    
+    # Reset the status of the previous batch images back to 'original'
+    df.loc[df['filename'].isin(previous_batch), 'status'] = 'original'
+    
+    # Save changes
+    df.to_csv(CSV_PATH, index=False)
+    
+    # Get updated stats
+    stats = {
+        'original': len(df[df['status'] == 'original']),
+        'good': len(df[df['status'] == 'good']),
+        'bad': len(df[df['status'] == 'bad'])
+    }
+    
+    return jsonify({
+        'success': True,
+        'stats': stats
+    })
 
 if __name__ == '__main__':
     app.run(debug=True) 

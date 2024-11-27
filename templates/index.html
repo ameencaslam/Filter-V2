@@ -88,8 +88,20 @@
         transition: opacity 0.2s ease-in-out;
       }
       .bad img {
-        opacity: 0.5;
+        opacity: 0.1;
         filter: grayscale(50%);
+      }
+      .bad::after {
+        content: "×";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3em;
+        color: #dc3545;
+        font-weight: bold;
+        pointer-events: none;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
       }
       .stats-card {
         background: white;
@@ -483,6 +495,12 @@
 
       <div class="row mt-4 mb-4">
         <div class="col text-center">
+          <button
+            class="btn btn-lg btn-secondary me-2"
+            onclick="undoLastBatch()"
+          >
+            Undo Last Batch
+          </button>
           <button class="btn btn-lg btn-warning me-2" onclick="resetBatch()">
             Reset Batch
           </button>
@@ -507,6 +525,8 @@
       let isBindingKey = false;
       let currentKeyCode = "x"; // Store actual key code
       let tutorialModal = null;
+      let lastBatchState = null; // Store the last batch state
+      let lastBatchImages = null; // Store the last batch images
 
       document.addEventListener("DOMContentLoaded", function () {
         // Initialize modal
@@ -559,6 +579,9 @@
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
           return new bootstrap.Tooltip(tooltipTriggerEl);
         });
+
+        // Try to load last batch state from storage
+        loadLastBatchFromStorage();
       });
 
       // Modify loadGridPreferences to return a promise
@@ -752,6 +775,11 @@
       }
 
       function submitBatch() {
+        // Store current state before submitting
+        lastBatchState = new Set(badImages);
+        lastBatchImages = [...currentImages];
+        saveLastBatchToStorage(); // Save to localStorage
+
         const goodImages = currentImages
           .map((path) => path.split("/").pop())
           .filter((filename) => !badImages.has(filename));
@@ -908,6 +936,84 @@
       function startTutorial() {
         tutorialModal.show();
       }
+
+      function undoLastBatch() {
+        // Try to load from storage if not in memory
+        if (!lastBatchState || !lastBatchImages) {
+          if (!loadLastBatchFromStorage()) {
+            const noUndoModal = new bootstrap.Modal(
+              document.getElementById("noUndoModal")
+            );
+            noUndoModal.show();
+            return;
+          }
+        }
+
+        // Show the confirmation modal
+        const undoModal = new bootstrap.Modal(
+          document.getElementById("undoConfirmModal")
+        );
+        undoModal.show();
+      }
+
+      function confirmUndo() {
+        const undoModal = bootstrap.Modal.getInstance(
+          document.getElementById("undoConfirmModal")
+        );
+        undoModal.hide();
+
+        fetch("/undo_last_batch", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            previous_batch: lastBatchImages.map((path) =>
+              path.split("/").pop()
+            ),
+            bad_images: Array.from(lastBatchState),
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              // Restore the previous state
+              currentImages = lastBatchImages;
+              badImages = new Set(lastBatchState);
+              updateGrid();
+              updateStats(data.stats);
+              clearLastBatchStorage(); // Clear storage after successful undo
+            }
+          });
+      }
+
+      // Add these functions to handle localStorage
+      function saveLastBatchToStorage() {
+        localStorage.setItem(
+          "lastBatchState",
+          JSON.stringify(Array.from(badImages))
+        );
+        localStorage.setItem("lastBatchImages", JSON.stringify(currentImages));
+      }
+
+      function loadLastBatchFromStorage() {
+        const storedState = localStorage.getItem("lastBatchState");
+        const storedImages = localStorage.getItem("lastBatchImages");
+
+        if (storedState && storedImages) {
+          lastBatchState = new Set(JSON.parse(storedState));
+          lastBatchImages = JSON.parse(storedImages);
+          return true;
+        }
+        return false;
+      }
+
+      function clearLastBatchStorage() {
+        localStorage.removeItem("lastBatchState");
+        localStorage.removeItem("lastBatchImages");
+        lastBatchState = null;
+        lastBatchImages = null;
+      }
     </script>
     <div class="modal fade" id="keyBindModal" tabindex="-1">
       <div class="modal-dialog modal-dialog-centered">
@@ -1063,6 +1169,68 @@
                 class="bg-dark"
               ></button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Undo Confirmation Modal -->
+    <div class="modal fade" id="undoConfirmModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Undo</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to undo the last batch submission?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="confirmUndo()"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Undo Available Modal -->
+    <div class="modal fade" id="noUndoModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">No Batch to Undo</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p>There is no previous batch available to undo.</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              OK
+            </button>
           </div>
         </div>
       </div>
