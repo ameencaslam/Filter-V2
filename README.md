@@ -71,7 +71,7 @@ A web-based tool designed for efficiently filtering and categorizing large image
 
 ## 🛠️ Usage
 
-1. Place your images in the directory you specified in `images_dir` (supports `.jpg`, `.jpeg`, `.png`).
+1. Place your images in the directory you specified in `IMAGE_DIR` (supports `.jpg`, `.jpeg`, `.png`).
 2. Run the application:
    ```bash
    python app.py
