@@ -16,7 +16,7 @@ CSV_PATH = 'images.csv'
 # Replace before_first_request with a function that runs at startup
 def check_paths():
     base_dir = os.path.abspath(os.path.dirname(__file__))
-    images_dir = os.path.join(base_dir, 'nutshell30k')
+    images_dir = os.path.join(base_dir, 'your_image_directory_path')
     
     logger.debug(f"Base directory: {base_dir}")
     logger.debug(f"Images directory: {images_dir}")
